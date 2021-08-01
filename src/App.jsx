@@ -1,17 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import "./styles/reset.css";
 import "./styles/typography.css";
 import "./App.css";
 
 import TodoList from "./components/TodoList";
+import AddItem from "./components/AddItem";
 
 export default function App(props) {
   const [items, setItems] = useState([]);
+  const [showNewItem, setShowNewItem] = useState(false);
+  const [newItem, setNewItem] = useState("");
+  const inputRef = useRef(null);
+  const addBtnRef = useRef(null);
 
   useEffect(() => {
     setItems(props.data);
   }, []);
+
+  useEffect(() => {
+    if (showNewItem === true) {
+      inputRef.current.focus();
+    }
+  }, [showNewItem]);
+
+  function handleAddClick(e) {
+    setShowNewItem(true);
+  }
+
+  function handleCloseClick() {
+    setShowNewItem(false);
+    setTimeout(() => addBtnRef.current.focus());
+  }
 
   return (
     <div className="todoapp">
@@ -19,9 +39,25 @@ export default function App(props) {
       <div className="todos">
         <div className="todos__number-of-items">Number of items:</div>
         <TodoList items={items} />
-        <div className="todos_add-item-btn">
-          <button>Add</button>
-        </div>
+        {!showNewItem && (
+          <div className="todos_add-item-btn">
+            <button onClick={handleAddClick} ref={addBtnRef}>
+              Add
+            </button>
+          </div>
+        )}
+        {showNewItem && (
+          <>
+            <AddItem
+              newItem={newItem}
+              setNewItem={setNewItem}
+              inputRef={inputRef}
+            />
+            <button aria-label="Close" onClick={handleCloseClick}>
+              X
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
