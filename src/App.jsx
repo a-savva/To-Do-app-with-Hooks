@@ -4,6 +4,8 @@ import "./styles/reset.css";
 import "./styles/typography.css";
 import "./App.css";
 
+import TodoList from "./components/Todo";
+
 export default function App(props) {
   const [items, setItems] = useState([]);
 
@@ -11,22 +13,12 @@ export default function App(props) {
     setItems(props.data);
   }, []);
 
-  const showListItems = () => {
-    return (
-      <ul>
-        {items.map((item) => (
-          <li key={item.id}>{item.content}</li>
-        ))}
-      </ul>
-    );
-  };
-
   return (
     <div className="todoapp">
       <h1 className="h1">To Do</h1>
       <div className="todos">
         <div className="todos__number-of-items">Number of items:</div>
-        <div className="todos_list">{showListItems()}</div>
+        <TodoList items={items} />
         <div className="todos_add-item-btn">
           <button>Add</button>
         </div>
