@@ -1,8 +1,13 @@
 import React from "react";
 
-export default function AddItem({ newItem, setNewItem, inputRef }) {
+export default function AddItem({
+  newItem,
+  setNewItem,
+  inputRef,
+  handleAddItemClick,
+}) {
   return (
-    <form>
+    <form onSubmit={handleAddItemClick}>
       <label htmlFor="new-item">New item:</label>
       <input
         type="text"
