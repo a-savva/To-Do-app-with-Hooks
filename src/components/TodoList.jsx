@@ -1,11 +1,13 @@
 import React from "react";
 
+import Todo from "./Todo/Todo";
+
 export default function TodoList({ items }) {
   return (
-    <div>
+    <div className="todos_list">
       <ul>
         {items.map((item) => (
-          <li key={item.id}>{item.content}</li>
+          <Todo item={item} key={item.id} />
         ))}
       </ul>
     </div>

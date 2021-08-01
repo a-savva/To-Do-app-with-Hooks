@@ -4,7 +4,7 @@ import "./styles/reset.css";
 import "./styles/typography.css";
 import "./App.css";
 
-import TodoList from "./components/Todo";
+import TodoList from "./components/TodoList";
 
 export default function App(props) {
   const [items, setItems] = useState([]);
