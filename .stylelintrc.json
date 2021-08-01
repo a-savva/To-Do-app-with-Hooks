@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "order/properties-alphabetical-order": true,
+    "color-no-invalid-hex": true,
+    "color-named": "never",
+    "unit-blacklist": ["px"],
+    "at-rule-blacklist": "outline"
+  }
+}
