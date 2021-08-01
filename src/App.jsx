@@ -50,6 +50,22 @@ export default function App(props) {
   function handleDeleteItemClick(id) {
     const updatedItems = items.filter((item) => item.id !== id);
     setItems(updatedItems);
+
+    const findPositionInItems = items.findIndex((item) => item.id === id);
+
+    if (updatedItems.length) {
+      if (findPositionInItems === items.length - 1) {
+        const nextItem = items[findPositionInItems - 1];
+        document.getElementById(nextItem.id).querySelector("button").focus();
+        return;
+      }
+
+      const nextItem = items[findPositionInItems + 1];
+      document.getElementById(nextItem.id).querySelector("button").focus();
+      return;
+    }
+
+    addBtnRef.current.focus();
   }
 
   return (
