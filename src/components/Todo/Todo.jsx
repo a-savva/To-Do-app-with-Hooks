@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Todo({ item, handleDeleteItemClick }) {
   return (
-    <li>
+    <li id={item.id}>
       {item.content}
       <button
         aria-label="Delete"
