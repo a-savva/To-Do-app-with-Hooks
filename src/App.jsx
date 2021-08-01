@@ -7,6 +7,8 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import AddItem from "./components/AddItem";
 
+import { nanoid } from "nanoid";
+
 export default function App(props) {
   const [items, setItems] = useState([]);
   const [showNewItem, setShowNewItem] = useState(false);
@@ -33,6 +35,18 @@ export default function App(props) {
     setTimeout(() => addBtnRef.current.focus());
   }
 
+  function handleAddItemClick(e) {
+    e.preventDefault();
+
+    if (newItem) {
+      const newId = `todo-${nanoid()}`;
+      console.log(newId);
+      const newItemObj = { id: newId, content: newItem, completed: false };
+      setItems([...items, newItemObj]);
+      setNewItem("");
+    }
+  }
+
   return (
     <div className="todoapp">
       <h1 className="h1">To Do</h1>
@@ -52,6 +66,7 @@ export default function App(props) {
               newItem={newItem}
               setNewItem={setNewItem}
               inputRef={inputRef}
+              handleAddItemClick={handleAddItemClick}
             />
             <button aria-label="Close" onClick={handleCloseClick}>
               X
