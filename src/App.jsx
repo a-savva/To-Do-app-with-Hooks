@@ -47,12 +47,19 @@ export default function App(props) {
     }
   }
 
+  function handleDeleteItemClick(id) {
+    const updatedItems = items.filter((item) => item.id !== id);
+    setItems(updatedItems);
+  }
+
   return (
     <div className="todoapp">
       <h1 className="h1">To Do</h1>
       <div className="todos">
-        <div className="todos__number-of-items">Number of items:</div>
-        <TodoList items={items} />
+        <div className="todos__number-of-items">
+          Number of items: {items.length}
+        </div>
+        <TodoList items={items} handleDeleteItemClick={handleDeleteItemClick} />
         {!showNewItem && (
           <div className="todos_add-item-btn">
             <button onClick={handleAddClick} ref={addBtnRef}>
