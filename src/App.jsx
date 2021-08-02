@@ -35,6 +35,16 @@ export default function App(props) {
     setTimeout(() => addBtnRef.current.focus());
   }
 
+  function handleSaveChangesClick(item, newItem) {
+    const { id } = item;
+    const itemToUpdate = items.filter((item) => item.id === id)[0];
+    const itemToUpdateObj = { ...itemToUpdate, content: newItem };
+    const itemsUpdated = items.map((item) =>
+      item.id === id ? itemToUpdateObj : item
+    );
+    setItems(itemsUpdated);
+  }
+
   function handleAddItemClick(e) {
     e.preventDefault();
 
@@ -75,7 +85,11 @@ export default function App(props) {
         <div className="todos__number-of-items">
           Number of items: {items.length}
         </div>
-        <TodoList items={items} handleDeleteItemClick={handleDeleteItemClick} />
+        <TodoList
+          items={items}
+          handleDeleteItemClick={handleDeleteItemClick}
+          handleSaveChangesClick={handleSaveChangesClick}
+        />
         {!showNewItem && (
           <div className="todos_add-item-btn">
             <button onClick={handleAddClick} ref={addBtnRef}>
