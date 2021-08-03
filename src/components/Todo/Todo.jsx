@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 
+import "./Todo.css";
+
 export default function Todo({
   item,
   handleDeleteItemClick,
@@ -47,14 +49,19 @@ export default function Todo({
 
   function showTodo() {
     return (
-      <li id={item.id}>
+      <li id={item.id} className="todo__item" role="list">
         {item.content}
-        <button onClick={handleEditClick} ref={editBtn}>
+        <button
+          onClick={handleEditClick}
+          ref={editBtn}
+          className="btn edit-btn"
+        >
           Edit
         </button>
         <button
           aria-label="Delete"
           onClick={() => handleDeleteItemClick(item.id)}
+          className="btn delete-btn"
         >
           X
         </button>
