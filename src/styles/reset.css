@@ -40,3 +40,9 @@ textarea,
 select {
   font: inherit;
 }
+
+.btn {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+}
