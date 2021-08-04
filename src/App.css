@@ -3,3 +3,15 @@
   display: flex;
   flex-direction: column;
 }
+
+.add-btn {
+  background-color: #24a0ed;
+  color: #f1f1f1;
+  height: 4rem;
+  width: 20rem;
+}
+
+.todos__add-item-btn {
+  display: flex;
+  justify-content: center;
+}

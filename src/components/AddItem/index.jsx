@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles.css";
+
 export default function AddItem({
   newItem,
   setNewItem,
@@ -16,7 +18,7 @@ export default function AddItem({
         onChange={(e) => setNewItem(e.target.value)}
         ref={inputRef}
       />
-      <button>Add</button>
+      <button className="btn add-btn">Add</button>
     </form>
   );
 }

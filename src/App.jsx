@@ -91,8 +91,12 @@ export default function App(props) {
           handleSaveChangesClick={handleSaveChangesClick}
         />
         {!showNewItem && (
-          <div className="todos_add-item-btn">
-            <button onClick={handleAddClick} ref={addBtnRef}>
+          <div className="todos__add-item-btn">
+            <button
+              onClick={handleAddClick}
+              ref={addBtnRef}
+              className="btn add-btn"
+            >
               Add
             </button>
           </div>
